@@ -5,8 +5,9 @@
 Reference the module to a specific version (recommended):
 ```hcl
 module "azure_security_center" {
-    source                  = "git://github.com/aztfmod/azure_security_center.git?ref=v0.3"
-  
+    source  = "aztfmod/caf-security-center/azurerm"
+    version = "0.1"
+
     contact_email           = "${var.prefix}"
     contact_phone           = "${var.resource_groups}"
     scope_id                = "${var.scope_id}"
