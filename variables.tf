@@ -13,3 +13,8 @@ variable "scope_id" {
 variable "workspace_id" {
   description = "(Required) Azure Log Analytics workspace ID that will be used."
 }
+
+variable "enable_security_center" {
+  description = "(Optional) Switch to determine if ASC is deployed."
+  default = true
+}
