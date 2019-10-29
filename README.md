@@ -78,6 +78,19 @@ Example
 workspace_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/operations-rg/providers/microsoft.operationalinsights/workspaces/myloganalytics"
 ```
 
+## enable_security_center
+(Optional) Switch to determine if ASC is deployed. Defaulted to true.
+```hcl 
+variable "enable_security_center" {
+  description = "(Optional) Switch to determine if ASC is deployed."
+  default = true
+}
+```
+Example
+```hcl
+enable_security_center = false
+```
+
 # Output
 ## object
 Outputs the created ASC object: 
