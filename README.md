@@ -6,20 +6,8 @@ Reference the module to a specific version (recommended):
 ```hcl
 module "azure_security_center" {
     source  = "aztfmod/caf-security-center/azurerm"
-    version = "0.1"
+    version = "0.x.y"
 
-    contact_email           = "${var.prefix}"
-    contact_phone           = "${var.resource_groups}"
-    scope_id                = "${var.scope_id}"
-    workspace_id            = "${var.workspace_id}"
-}
-```
-
-Or get the latest version
-```hcl
-module "azure_security_center" {
-    source                  = "git://github.com/aztfmod/azure_security_center.git?ref=latest"
-  
     contact_email           = "${var.prefix}"
     contact_phone           = "${var.resource_groups}"
     scope_id                = "${var.scope_id}"
@@ -91,21 +79,9 @@ Example
 enable_security_center = false
 ```
 
-# Output
-## object
-Outputs the created ASC object: 
-```hcl
-output "object" {
-  value = azurerm_security_center_workspace.sc
-}
+# Outputs
 
-```
-
-## id
-Outputs the created ASC object: 
-```hcl
-output "id" {
-  value = azurerm_security_center_workspace.sc.id
-}
-
-```
+| Name | Type | Description | 
+| -- | -- | -- | 
+| object | object | Returns the full ASC object created |
+| id | string | Returns the ID of the ASC environment created |
