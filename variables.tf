@@ -1,20 +1,23 @@
-variable "contact_email" {
-  description = "(Required) Email address of the email alerts recipient. "
-}
-
-variable "contact_phone" {
-  description = "(Required) Phone number of the alerts recipient."
-}
-
-variable "scope_id" {
+variable scope_id {
   description = "(Required) The scope at which the ASC will be tied, typically a subscription: /subscriptions/00000000-0000-0000-0000-000000000000"
 }
 
-variable "workspace_id" {
+variable workspace_id {
   description = "(Required) Azure Log Analytics workspace ID that will be used."
 }
 
-variable "enable_security_center" {
-  description = "(Optional) Switch to determine if ASC is deployed."
-  default = true
+variable asc_config {
+  description = "(Required) Azure Security Center Configuration Object"
+  type = object({
+    contact_email       = string #(Required) Email address of the email alerts recipient.
+    contact_phone       = string #(Required) Phone number of the alerts recipient.
+    alert_notifications = bool
+    alerts_to_admins    = bool
+  })
+  default = {
+    contact_email       = ""
+    contact_phone       = ""
+    alert_notifications = true
+    alerts_to_admins    = true
+  }
 }
