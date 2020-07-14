@@ -1,9 +1,11 @@
 variable scope_id {
   description = "(Required) The scope at which the ASC will be tied, typically a subscription: /subscriptions/00000000-0000-0000-0000-000000000000"
+  type        = string
 }
 
 variable workspace_id {
   description = "(Required) Azure Log Analytics workspace ID that will be used."
+  type        = string
 }
 
 variable asc_config {
