@@ -14,10 +14,4 @@ variable asc_config {
     alert_notifications = bool
     alerts_to_admins    = bool
   })
-  default = {
-    contact_email       = ""
-    contact_phone       = ""
-    alert_notifications = true
-    alerts_to_admins    = true
-  }
 }

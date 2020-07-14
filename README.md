@@ -9,10 +9,9 @@ module "azure_security_center" {
     source  = "aztfmod/caf-security-center/azurerm"
     version = "0.x.y"
 
-    contact_email           = "${var.prefix}"
-    contact_phone           = "${var.resource_groups}"
-    scope_id                = "${var.scope_id}"
-    workspace_id            = "${var.workspace_id}"
+    asc_config   = var.asc_config
+    scope_id     = var.scope_id
+    workspace_id = var.workspace_id
 }
 ```
 
