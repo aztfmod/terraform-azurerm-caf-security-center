@@ -30,7 +30,7 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| asc\_config | (Required) Azure Security Center Configuration Object | <pre>object({<br>    contact_email       = string #(Required) Email address of the email alerts recipient.<br>    contact_phone       = string #(Required) Phone number of the alerts recipient.<br>    alert_notifications = bool<br>    alerts_to_admins    = bool<br>  })</pre> | <pre>{<br>  "alert_notifications": true,<br>  "alerts_to_admins": true,<br>  "contact_email": "",<br>  "contact_phone": ""<br>}</pre> | no |
+| asc\_config | (Required) Azure Security Center Configuration Object | <pre>object({<br>    contact_email       = string #(Required) Email address of the email alerts recipient.<br>    contact_phone       = string #(Required) Phone number of the alerts recipient.<br>    alert_notifications = bool<br>    alerts_to_admins    = bool<br>  })</pre> | n/a | yes |
 | scope\_id | (Required) The scope at which the ASC will be tied, typically a subscription: /subscriptions/00000000-0000-0000-0000-000000000000 | `any` | n/a | yes |
 | workspace\_id | (Required) Azure Log Analytics workspace ID that will be used. | `any` | n/a | yes |
 
