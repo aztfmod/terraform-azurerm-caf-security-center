@@ -1,4 +1,6 @@
-[![Build status](https://dev.azure.com/azure-terraform/Blueprints/_apis/build/status/modules/azure_security_center)](https://dev.azure.com/azure-terraform/Blueprints/_build/latest?definitionId=2)
+[![VScodespaces](https://img.shields.io/endpoint?url=https%3A%2F%2Faka.ms%2Fvso-badge)](https://online.visualstudio.com/environments/new?name=terraform-azurerm-caf-virtual-network&repo=aztfmod/terraform-azurerm-caf-virtual-network)
+[![Gitter](https://badges.gitter.im/aztfmod/community.svg)](https://gitter.im/aztfmod/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 # Configures Azure Security Center
 
 
@@ -8,80 +10,36 @@ module "azure_security_center" {
     source  = "aztfmod/caf-security-center/azurerm"
     version = "0.x.y"
 
-    contact_email           = "${var.prefix}"
-    contact_phone           = "${var.resource_groups}"
-    scope_id                = "${var.scope_id}"
-    workspace_id            = "${var.workspace_id}"
+    asc_config   = var.asc_config
+    scope_id     = var.scope_id
+    workspace_id = var.workspace_id
 }
 ```
 
-# Parameters
+<!--- BEGIN_TF_DOCS --->
+## Requirements
 
-## contact_email
-(Required) Email address of the email alerts recipient.
-```hcl
-variable "contact_email" {
-  description = "(Required) Email address of the email alerts recipient. "
-}
+No requirements.
 
-```
-Example
-```hcl
-    contact_email   = "email@email.com" 
-```
+## Providers
 
-## contact_phone
-(Required) Phone number of the alerts recipient.
-```hcl
-variable "contact_phone" {
-  description = "(Required) Phone number of the alerts recipient."
-}
-```
-Example
-```hcl
-    contact_phone   = "9293829328"
-```
+| Name | Version |
+|------|---------|
+| azurerm | n/a |
 
-## scope_id
-(Required) The scope at which the ASC will be tied, typically a subscription: /subscriptions/00000000-0000-0000-0000-000000000000
-```hcl
-variable "scope_id" {
-  description = "(Required) The scope at which the ASC will be tied, typically a subscription: /subscriptions/00000000-0000-0000-0000-000000000000"
-}
-```
-Example
-```hcl
-scope_id = "/subscriptions/00000000-0000-0000-0000-000000000000"
-```
+## Inputs
 
-## workspace_id
-(Required) Azure Log Analytics workspace ID that will be used.
-```hcl
-variable "workspace_id" {
-  description = "(Required) Azure Log Analytics workspace ID that will be used."
-}
-```
-Example
-```hcl
-workspace_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/operations-rg/providers/microsoft.operationalinsights/workspaces/myloganalytics"
-```
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| asc\_config | (Required) Azure Security Center Configuration Object | <pre>object({<br>    contact_email       = string #(Required) Email address of the email alerts recipient.<br>    contact_phone       = string #(Required) Phone number of the alerts recipient.<br>    alert_notifications = bool<br>    alerts_to_admins    = bool<br>  })</pre> | n/a | yes |
+| scope\_id | (Required) The scope at which the ASC will be tied, typically a subscription: /subscriptions/00000000-0000-0000-0000-000000000000 | `string` | n/a | yes |
+| workspace\_id | (Required) Azure Log Analytics workspace ID that will be used. | `string` | n/a | yes |
 
-## enable_security_center
-(Optional) Switch to determine if ASC is deployed. Defaulted to true.
-```hcl 
-variable "enable_security_center" {
-  description = "(Optional) Switch to determine if ASC is deployed."
-  default = true
-}
-```
-Example
-```hcl
-enable_security_center = false
-```
+## Outputs
 
-# Outputs
+| Name | Description |
+|------|-------------|
+| id | Output the object ID |
+| object | Output the full object |
 
-| Name | Type | Description | 
-| -- | -- | -- | 
-| object | object | Returns the full ASC object created |
-| id | string | Returns the ID of the ASC environment created |
+<!--- END_TF_DOCS --->
